@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jeecg.modules.yydmh.mhMessageBoardAudit.mapper.MhMessageBoardAuditMapper">
+
+    <select id="queryCommentList" parameterType="org.jeecg.modules.yydmh.mhMessageBoardAudit.entity.MhMessageBoardAudit" resultType="java.util.HashMap" >
+
+        select a.id,a.leave_word_time,a.content,b.nick_name,b.head_portrait from (
+        select * from mh_message_board_audit where del_flag = 0 and plate = #{plate} and (`status`  = 1 or mh_user_id = #{mhUserId}) and mh_article_id = #{mhArticleId}
+        )as a
+        inner join
+        mh_user_register_info as b
+        on a.mh_user_id = b.id
+        order by leave_word_time desc
+    </select>
+
+</mapper>

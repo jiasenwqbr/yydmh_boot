@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jeecg.modules.yydmh.mhUserRegisterInfo.mapper.MhUserRegisterInfoMapper">
+    <!-- 根据手机号查询 -->
+    <select id="getUserByPhone"  resultType="org.jeecg.modules.yydmh.mhUserRegisterInfo.entity.MhUserRegisterInfo">
+		select * from  mh_user_register_info  where phone = #{phone} and del_flag = 0
+	</select>
+
+
+    <!-- 根据openId查询 -->
+    <select id="getUserByOpenId"  resultType="org.jeecg.modules.yydmh.mhUserRegisterInfo.entity.MhUserRegisterInfo">
+		select * from  mh_user_register_info  where open_id = #{openId} and del_flag = 0
+	</select>
+</mapper>
